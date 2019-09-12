@@ -1,0 +1,4 @@
+/* global $ */
+$("#comments_area").html("<%= j(render 'index', { comments: @comment.event.comments.order(created_at: "DESC") }) %>")
+$("textarea").val('')
+$("hidden").val('')
