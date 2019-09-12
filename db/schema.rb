@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_09_05_045849) do
+ActiveRecord::Schema.define(version: 2019_09_12_064711) do
 
   create_table "comments", force: :cascade do |t|
     t.string "content", null: false
@@ -31,6 +31,11 @@ ActiveRecord::Schema.define(version: 2019_09_05_045849) do
     t.string "content"
     t.index ["event_code"], name: "index_events_on_event_code", unique: true
     t.index ["user_id"], name: "index_events_on_user_id"
+  end
+
+  create_table "unknown_users", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade do |t|
