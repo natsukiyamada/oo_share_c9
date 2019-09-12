@@ -6,8 +6,7 @@ class InvitationsController < ApplicationController
  
   def create
     @event = Event.find_by(event_code: invitation_params[:event_code])
-    @user = @event.user
-    
+
     if @event.present? && @user.present?
        @user = @event.user
        redirect_to user_event_path(@user, @event)
