@@ -8,17 +8,15 @@ class UnknownUsersController < ApplicationController
       @user = @event.user
       
       unless signed_in?
-        user = UnknownUser.new(unknown_users_params[:id])
-        session[:user_id] = user.id
+        unknown_user = UnknownUser.new(unknown_users_params[:id])
+        unknown_user.save
+        session[:unknown_user_id] = unknown_user.id
       end
       redirect_to user_event_path(@user, @event)
-      
     else
       flash.notice = "コードに該当するイベントが見つかりませんでした"
       redirect_to root_url
     end
-    
-    
   end
 
   def destroy
