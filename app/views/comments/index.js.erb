@@ -1,4 +1,6 @@
 /* global $ */
+                                                            /* ↓まずコメントに紐付くイベントを呼び出し、そのイベントが持つ全コメントを呼び出す*/
 $("#comments_area").html("<%= j(render 'index', { comments: @comment.event.comments.order(created_at: "DESC") }) %>")
+/* ↓textareaの中身を空にして返す*/
 $("textarea").val('')
 $("hidden").val('')

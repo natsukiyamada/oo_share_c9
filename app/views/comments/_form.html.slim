@@ -1,4 +1,17 @@
-= form_with(model: [ event, Comment.new ]) do |f| 
+/めっちゃださいし短くしたい
+- if judge_unknown_user_id
+    = form_with(model: [ event, Comment.new ]) do |f| 
+        /userにはcurrent_userが代入されている。
+        .form-group    
+            = f.hidden_field :unknown_user_id, value: user.id, class: "form-group"
+        .form-group    
+            = f.hidden_field :event_id, value: event.id, class: "form-group"
+        .form-group
+          = f.text_area :content, placeholder: "コメントを入力", class: 'form-controll'
+        = f.submit "SEND", class: "event_submit_btn"
+- else
+    = form_with(model: [ event, Comment.new ]) do |f| 
+        /userにはcurrent_userが代入されている。
         .form-group    
             = f.hidden_field :user_id, value: user.id, class: "form-group"
         .form-group    

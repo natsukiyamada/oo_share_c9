@@ -13,6 +13,7 @@ div.event_comment_form_wrapper
       p 説明文: #{@event.content} 
   div.event_comment_form_main
     div#post_comment_form
+      /eventには@event, userにはcurrent_userが代入される
       = render partial: 'comments/form', locals: { event: @event, user: @user }
 
     div#comments_area

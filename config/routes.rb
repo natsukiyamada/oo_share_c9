@@ -14,7 +14,6 @@ Rails.application.routes.draw do
 
  resources :unknown_users, only: [:create, :destroy]
  
- 
  get '/login', to: "sessions#new"
  post '/login', to: "sessions#create"
  delete "/logout", to: "sessions#destroy"

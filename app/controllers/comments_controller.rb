@@ -14,7 +14,6 @@ class CommentsController < ApplicationController
         flash.alert = "コメントの作成に失敗しました"
       end
     end
-    
   end
 
   def destroy
@@ -28,7 +27,9 @@ class CommentsController < ApplicationController
   end
 
   private
+    
     def comment_params
-      params.require(:comment).permit(:user_id, :event_id, :content)
+      params.require(:comment).permit(:user_id, :event_id, :content, :unknown_user_id)
     end
+
 end
