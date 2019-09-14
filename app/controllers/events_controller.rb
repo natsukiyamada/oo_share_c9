@@ -8,7 +8,7 @@ class EventsController < ApplicationController
   def show
     @user = current_user
     @event = Event.find(params[:id])
-    @comments = @event.comments.all
+    @comments = @event.comments.all.order(created_at: "DESC")
   end
 
   def create

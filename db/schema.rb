@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_09_12_134502) do
+ActiveRecord::Schema.define(version: 2019_09_14_032843) do
 
   create_table "comments", force: :cascade do |t|
     t.string "content", null: false
@@ -33,6 +33,21 @@ ActiveRecord::Schema.define(version: 2019_09_12_134502) do
     t.string "content"
     t.index ["event_code"], name: "index_events_on_event_code", unique: true
     t.index ["user_id"], name: "index_events_on_user_id"
+  end
+
+  create_table "likes", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "unknown_user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "comment_id"
+    t.index ["comment_id"], name: "index_likes_on_comment_id"
+    t.index ["unknown_user_id"], name: "index_likes_on_unknown_user_id"
+    #rails console: ActiveRecord::Migration.remove_index "likes", name: "index_likes_on_unknown_user_id_and_event_id"を実行　9月14日
+    t.index ["unknown_user_id"], name: "index_likes_on_unknown_user_id_and_event_id", unique: true
+    t.index ["user_id"], name: "index_likes_on_user_id"
+    # rails console: ActiveRecord::Migration.remove_index "likes", name: "index_likes_on_user_id_and_event_id"を実行済み 9月14日
+    t.index ["user_id"], name: "index_likes_on_user_id_and_event_id", unique: true
   end
 
   create_table "unknown_users", force: :cascade do |t|
