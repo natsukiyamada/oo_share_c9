@@ -3,7 +3,7 @@ Rails.application.routes.draw do
  root to: "homes#index"
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
  resources :users do
-    resources :events, only: [:new, :create, :destroy, :show] 
+    resources :events, only: [:new, :create, :destroy, :show, :update] 
  end
 
  resources :events, only: [] do
@@ -15,7 +15,6 @@ resources :comments, only: [] do
 end
  
  resources :invitations, only: [:new, :create, :destroy]
-
  resources :unknown_users, only: [:create, :destroy]
  
  get '/login', to: "sessions#new"

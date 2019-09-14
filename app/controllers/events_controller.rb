@@ -2,7 +2,6 @@ class EventsController < ApplicationController
   def new
     @event = current_user.events.build
     @user = current_user
-    
   end
   
   def show
@@ -30,6 +29,14 @@ class EventsController < ApplicationController
     flash.notice = "イベントを削除しました" if @event.destroy
   	redirect_to user_path(@user)
   end
+  
+  def update
+    event = Event.find(params[:id])
+    event.update!(event_params)
+    redirect_to user_event_path(event.user, event)
+  end
+  
+  private
   
   def event_params
     params.require(:event).permit(:user_id, :event_code, :name, :content)
