@@ -12,7 +12,15 @@ div.event_comment_form_wrapper
   div.event_comment_form_description_wrapper
     div.event_comment_form_description
       p 説明文: #{@event.content} 
+    -if @event.user.id == current_user.id 
+      div.event_comment_form_edit_btn
+        .fas.fa-edit
 
+-if @event.user.id == current_user.id
+  = render partial: 'update', locals: {event: @event}
+  
+  
+-unless @event.user.id == current_user.id
   div.event_comment_form_main
     div#post_comment_form
       /eventには@event, userにはcurrent_userが代入される
@@ -21,4 +29,3 @@ div.event_comment_form_wrapper
     div#comments_area
       = render partial: 'comments/index', locals: { comments: @comments }
     
-= render partial: 'update', locals: {event: @event}

@@ -19,8 +19,6 @@ class InvitationsController < ApplicationController
         @user = current_user
         redirect_to user_path(@user)
     end
-    
-  
   end
   
   private
