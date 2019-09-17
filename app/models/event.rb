@@ -6,5 +6,4 @@ class Event < ApplicationRecord
     validates :name, presence: true
     validates :event_code, presence: true, uniqueness: true
     validates :content, length: { maximum: 200 }
-    
 end

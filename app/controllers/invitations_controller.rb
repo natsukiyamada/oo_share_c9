@@ -5,19 +5,26 @@ class InvitationsController < ApplicationController
   end
  
   def create
-    @event = Event.find_by(event_code: invitation_params[:event_code])
-
-    if @event.present? && @user.present?
-       @user = @event.user
-       redirect_to user_event_path(@user, @event)
+    event = Event.find_by(event_code: invitation_params[:event_code])
+    
+    unless event.nil?
+       user = event.user
+       
+       if user == current_user
+         redirect_to user_event_path(user, event)
+       else
+         reset_session
+         
+         unknown_user = UnknownUser.new
+         unknown_user.save
+         session[:unknown_user_id] = unknown_user.id
+         redirect_to user_event_path(event.user, event)
+       end
+       
     else
-      unless @event.present?
-        flash.notice = "イベントがありません"
-      else
-        flash.notice = "ユーザー情報に問題があります"
-      end
-        @user = current_user
-        redirect_to user_path(@user)
+       flash.notice = "イベントがありません"
+       @user = current_user
+       redirect_to user_path(@user)
     end
   end
   
