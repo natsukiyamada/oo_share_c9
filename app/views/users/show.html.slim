@@ -13,7 +13,7 @@ div.user_content
           = f.submit "参加", class: "make_event_form_submit"
   
 div.event_content_wrapper
-  div.event_content  
+  div.event_content
     div.create_event_form_wrapper
       div.create_event_form イベントをつくる
     - if @events.present?
@@ -24,7 +24,6 @@ div.event_content_wrapper
 			  div.user_show_event_destroy = link_to "削除", user_event_path(@user.id, event), method: :delete, data: { confirm: "#{event.name}を削除しますか?" }
     - else
           div.no_event 作成済みのイベントはありません
-
 
 div.modal_wrapper_make_event
   div.modal
