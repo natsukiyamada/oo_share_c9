@@ -10,11 +10,18 @@ class EventsController < ApplicationController
     @comments = @event.comments.all.order(created_at: "DESC")
     @comment_liked_ranks = @event.comments.joins(:likes).group(:id).order("count(likes.id) DESC")
     @new_comments = @event.comments.where('id > ?', params[:last_comment_id])
+    @update = params[:update_comment_area]
     
     respond_to do |format| 
       format.html
-      #format.json { @new_comments = Comment.where('id > ?', params[:last_comment_id])}
-      format.js { render :show }
+
+      if @new_comments.present? && @update.present?
+        format.js { render :show }
+      elsif @new_comments.present?
+        format.js { render :show }
+      elsif @update.present?
+        format.js { render :update }
+      end
     end
   end
   
