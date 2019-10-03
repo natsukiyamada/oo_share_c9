@@ -1,10 +1,4 @@
 class CommentsController < ApplicationController
-  def update
-    respond_to do |format| 
-      format.json { @new_comment = Comment.where('id > ?', params[:new_comment][:id]) } # json形式でアクセスがあった場合は、params[:new_comment][:id]よりも大きいidがないかCommentから検索して、@new_commentに代入する
-    end
-  end
-  
   def create
     @event = Event.find_by(id: params[:event_id])
     @comment = @event.comments.build(comment_params)

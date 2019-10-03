@@ -1,5 +1,32 @@
 /* global $ */
 $(document).on('turbolinks:load', function() { 
+	$(function(){
+		if (window.location.href.match(/\/users\/\d+\/events/)!=null){
+			setInterval(update, 5000);
+		}
+	});
+	
+	function update(){
+		let parentDOM = document.getElementById("comments_area");
+		let commentTarget = parentDOM.getElementsByClassName("all_comment_each")[0];
+		let id = commentTarget.getAttribute('data-id');
+		let comment_id = Number(id);
+		
+		$.ajax({ 
+			url: location.href, 
+			type: 'GET',
+			data: {last_comment_id: comment_id },
+			dataType: 'script' //js.erbをレンダリングする
+		})
+		.done(function(data){
+			alert('done');
+			console.log('success');
+		})
+		.fail(function (jqXHR, textStatus, errorThrown){
+			alert('検索に失敗しました');
+			console.log("ajax通信に失敗しました");
+	    });
+	}
 	
 	$('.create_event_form').click(function(){
 	    $('.modal_wrapper_make_event').addClass('active');
@@ -8,8 +35,7 @@ $(document).on('turbolinks:load', function() {
 	$('.close_modal_event').click(function() {
 	    $('.modal_wrapper_make_event').removeClass('active');
 	});
-	
-	
+
 	/*イベントの説明を編集するボタン用 */
 	$('.event_comment_form_edit_btn').click(function(){
 	    $('.event_edit_area_wrapper').css('display', 'block');
