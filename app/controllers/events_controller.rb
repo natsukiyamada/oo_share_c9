@@ -9,6 +9,8 @@ class EventsController < ApplicationController
     @event = Event.find(params[:id])
     @comments = @event.comments.all.order(created_at: "DESC")
     @comment_liked_ranks = @event.comments.joins(:likes).group(:id).order("count(likes.id) DESC")
+    
+    #ajax
     @new_comments = @event.comments.where('id > ?', params[:last_comment_id])
     @update = params[:update_comment_area]
     @last_comment = params[:last_comment_id]
