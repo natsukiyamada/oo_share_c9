@@ -20,11 +20,9 @@ $(document).on('turbolinks:load', function() {
 			dataType: 'script' //js.erbをレンダリングする
 		})
 		.done(function(data){
-			alert('done');
 			console.log('success');
 		})
 		.fail(function (jqXHR, textStatus, errorThrown){
-			alert('検索に失敗しました');
 			console.log("ajax通信に失敗しました");
 	    });
 	}
