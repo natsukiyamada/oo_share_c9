@@ -13,14 +13,14 @@ class EventsController < ApplicationController
     #ajax
     @new_comments = @event.comments.where('id > ?', params[:last_comment_id])
     @update = params[:update_comment_area]
-    @last_comment = params[:last_comment_id]
+    last_comment = params[:last_comment_id]
     
     respond_to do |format| 
       format.html
 
-      if @last_comment.present? && @update.present?
+      if last_comment.present? && @update.present?
         format.js { render :show }
-      elsif @last_comment.present?
+      elsif last_comment.present?
         format.js { render :show }
       elsif @update.present?
         format.js { render :update }

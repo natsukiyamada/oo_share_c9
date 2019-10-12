@@ -12,13 +12,12 @@ class LikesController < ApplicationController
     
     respond_to do |format|  
       if like.save
-        format.js { render :create}
+        format.js { render :create }
       else
         flash.alert = "いいねに失敗しました"
         format.html {redirect_to user_event_path(user, event)}
       end
     end
-    
   end
 
   def destroy
