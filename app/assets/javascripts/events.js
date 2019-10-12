@@ -42,6 +42,7 @@ $(document).on('turbolinks:load', function() {
 	    });
 	}
 	
+	/*イベント作成ボタン*/
 	$('.create_event_form').click(function(){
 	    $('.modal_wrapper_make_event').addClass('active');
 	});
@@ -49,6 +50,11 @@ $(document).on('turbolinks:load', function() {
 	$('.close_modal_event').click(function() {
 	    $('.modal_wrapper_make_event').removeClass('active');
 	});
+	
+	$('.back_to_window').click(function(){
+		 $('.modal_wrapper_make_event').removeClass('active');
+	});
+
 
 	/*イベントの説明を編集するボタン用 */
 	$('.event_comment_form_edit_btn').click(function(){
@@ -57,6 +63,10 @@ $(document).on('turbolinks:load', function() {
 
 	$('.close_modal_event_edit').click(function() {
 	    $('.event_edit_area_wrapper').css('display', 'none');
+	});
+	
+	$('.back_to_window').click(function(){
+		$('.event_edit_area_wrapper').css('display', 'none');
 	});
 	
 	
