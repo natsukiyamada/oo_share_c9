@@ -4,6 +4,7 @@ div.user_content
   .user_info_details  
       div.user_edit
         div.user_icon
+          .fas.fa-user
           div.user_name #{@user.name}
         div.dropdown_menu_user_edit
           div.user_information 
@@ -11,7 +12,7 @@ div.user_content
             div.user_information_name #{@user.name} 
             div.user_information_email #{@user.mail}
           div.user_information_edit=link_to "変更", edit_user_path(@user)
-      div.make_event_form  
+      div.make_event_form
         = form_with scope: :invitation, url: invitations_path do |f|
           .form-group
             = f.text_field :event_code, placeholder: "#Enter Code", class: 'form-group'
