@@ -10,7 +10,7 @@ class UsersController < ApplicationController
 	      session[:user_id] = @user.id
 	      redirect_to user_path(@user)
 	    else
-	      flash.now[:alert] = "登録できませんでした"
+	      flash.notice = "登録できませんでした"
 	      redirect_to root_url
 	    end
 	end
