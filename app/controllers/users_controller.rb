@@ -11,7 +11,7 @@ class UsersController < ApplicationController
 	      redirect_to user_path(@user)
 	    else
 	      flash.now[:alert] = "登録できませんでした"
-	      render :new
+	      redirect_to root_url
 	    end
 	end
 	
