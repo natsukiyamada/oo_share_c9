@@ -71,3 +71,7 @@ gem 'html2slim'
 gem "jquery-rails"
 
 gem 'font-awesome-sass', '~> 5.9.0'
+
+group :production do
+  gem 'pg', '0.21.0'
+end

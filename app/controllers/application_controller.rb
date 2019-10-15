@@ -9,7 +9,6 @@ private
 		  current_user ||= User.find_by(id: session[:user_id])
 	    elsif session[:unknown_user_id]
 	      current_user ||= UnknownUser.find_by(id: session[:unknown_user_id])
-	    else
 	    end
   end
 

@@ -32,7 +32,7 @@
      }
      
      .dropdown_menu_user_edit {
-         width:120%;
+         min-width:120%;
          padding: 3px 20px;
          background:rgb(244, 245, 244);
          display:none;
@@ -318,6 +318,10 @@
   
   .dropdown_menu_user_edit {
     z-index:50;   
+  }
+  
+  .user_information_email {
+    display:none;
   }
   
   .event_content {
