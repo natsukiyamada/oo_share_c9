@@ -2,8 +2,8 @@
 $(document).on('turbolinks:load', function() { 
 	$(function(){
 		if (window.location.href.match(/\/users\/\d+\/events/)!=null){
-			//setInterval(catchNewComment, 5000);
-			//setInterval(updateCommentArea, 6000);
+			setInterval(catchNewComment, 5000);
+			setInterval(updateCommentArea, 6000);
 		}
 	});
 	
